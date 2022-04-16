@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { MongooseModule } from '@nestjs/mongoose';
+import { SongModule } from './song/song.module';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -10,7 +12,9 @@ import { MongooseModule } from '@nestjs/mongoose';
     ),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, 'static')
-    })
+    }),
+    SongModule,
+    FileModule
   ]
 })
 export class AppModule {}
