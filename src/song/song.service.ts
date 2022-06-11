@@ -20,15 +20,17 @@ export class SongService {
     return songs;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} song`;
+  async findOne(id: string): Promise<Song> {
+    const song = await this.songModel.findOne({ _id: id });
+    return song;
   }
 
   update(id: number, updateSongDto: UpdateSongDto) {
     return `This action updates a #${id} song ${updateSongDto}`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} song`;
+  async remove(id: string): Promise<string> {
+    await this.songModel.findOneAndDelete({ _id: id });
+    return id;
   }
 }
