@@ -28,16 +28,16 @@ export class SongController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.songService.findOne(+id);
+    return this.songService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateSongDto: UpdateSongDto) {
-    return this.songService.update(+id, updateSongDto);
+    return this.songService.update(id, updateSongDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.songService.remove(+id);
+    return this.songService.remove(id);
   }
 }
