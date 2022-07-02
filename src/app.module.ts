@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
+import * as path from 'path';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SongModule } from './song/song.module';
 import { FileModule } from './file/file.module';
@@ -11,7 +11,7 @@ import { FileModule } from './file/file.module';
       'mongodb+srv://muzadmin:2xM7OH9yBPlOK8pg@tracks.tnpcn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
     ),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, 'static')
+      rootPath: path.resolve(__dirname, 'static')
     }),
     SongModule,
     FileModule
