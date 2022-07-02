@@ -7,17 +7,17 @@ export type CommentDocument = Comment & Document;
 
 @Schema()
 export class Comment {
-  @Prop({ type: [{ type: mongoose.Types.ObjectId, ref: 'Song' }] })
+  @Prop({ type: { type: mongoose.Types.ObjectId, ref: 'Song' } })
   song_id: Song;
 
-  @Prop()
+  @Prop({default: Date.now() })
   created_at: number;
 
   @Prop()
   updated_at: number;
 
   @Prop()
-  username: number;
+  username: string;
 
   @Prop()
   text: string;
