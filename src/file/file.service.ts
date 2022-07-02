@@ -15,7 +15,6 @@ export class FileService {
     try {
       const fileExtention = file.originalname.split('.').pop();
       const fileName = uuidv4() + '.' + fileExtention;
-      console.log("fileName: ", fileName)
       const filePath = path.resolve(__dirname, '..', 'static', type);
       if (!fs.existsSync(filePath)) {
         fs.mkdirSync(filePath, {recursive: true});
@@ -31,8 +30,6 @@ export class FileService {
     if (file) {
       try {
         const filePath = path.resolve(__dirname, '..', 'static', file);
-        console.log("file: ", file);
-        console.log("filePath: ", filePath);
         if (filePath) {
           fs.unlinkSync(filePath);
         }
